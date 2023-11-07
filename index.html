@@ -105,9 +105,23 @@
 
 
     <script>
+
         const spanElement = document.querySelector('.sc-value');
 
-        spanElement.textContent = '12 V';
+        // Function to fetch and display data
+        function fetchData() {
+            fetch('/.functions/netlify-function') // Replace with your Netlify Function URL
+                .then(response => response.json())
+                .then(data => {
+                    // Update the content on the web page
+                    spanElement.textContent = `${data.data} V`;
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+
+
 
     </script>
 </body>
